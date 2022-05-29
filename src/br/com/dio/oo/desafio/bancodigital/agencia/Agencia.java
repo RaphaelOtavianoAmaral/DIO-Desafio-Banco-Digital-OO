@@ -10,6 +10,12 @@ public class Agencia {
         this.codigo = codigo;
     }
 
+    @Override
+    public String toString() {
+        return  "Agência: " + nome + '\n'+
+                "Código: " + codigo + '\n';
+    }
+
     public String getNome() {
         return nome;
     }

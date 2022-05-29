@@ -1,23 +1,27 @@
 package br.com.dio.oo.desafio.bancodigital.conta;
 
 import br.com.dio.oo.desafio.bancodigital.agencia.Agencia;
+import br.com.dio.oo.desafio.bancodigital.banco.Banco;
 import br.com.dio.oo.desafio.bancodigital.cliente.Cliente;
 
 public abstract class Conta implements ContaInterface{
 
+    private Banco banco;
     protected Agencia agencia;
     protected int numeroConta;
     protected double saldo;
     protected Cliente titular;
 
-    public Conta(Agencia agencia, int numeroConta, double saldoInicial, Cliente titular) {
+    public Conta(Banco banco, Agencia agencia, int numeroConta, double saldoInicial, Cliente titular) {
+        this.banco = banco;
         this.agencia = agencia;
         this.numeroConta = numeroConta;
         this.saldo = saldoInicial;
         this.titular = titular;
     }
 
-    public Conta(Agencia agencia, int numeroConta, Cliente titular) {
+    public Conta(Banco banco, Agencia agencia, int numeroConta, Cliente titular) {
+        this.banco = banco;
         this.agencia = agencia;
         this.numeroConta = numeroConta;
         this.titular = titular;
@@ -40,12 +44,14 @@ public abstract class Conta implements ContaInterface{
         contaDestino.depositarDinheiro(valor);
     }
 
-    public void imprimirInformacoes() {
-        System.out.println("Titular: "+this.titular.getNome());
-        System.out.println("Agência: "+this.agencia.toString());
+    public void imprimirInformacoesExtrato() {
+        System.out.println("Banco: "+this.banco.getNome());
+        System.out.println(this.agencia.toString());
+        System.out.print(this.titular.toString());
         System.out.println("Número da Conta: "+this.numeroConta);
         System.out.println("Saldo da Conta: "+this.saldo+"R$");
     }
+
 
     public Agencia getAgencia() {
         return agencia;
@@ -61,5 +67,9 @@ public abstract class Conta implements ContaInterface{
 
     public Cliente getTitular() {
         return titular;
+    }
+
+    public Banco getBanco() {
+        return banco;
     }
 }
