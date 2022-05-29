@@ -52,7 +52,7 @@ public class ExemploInicial {
         banco.listarContas();
 
         System.out.println("\nCriando nova conta poupança para cliente 1...");
-        ContaInterface conta1 = new ContaPoupanca(banco,banco.getListaAgencias().get(1),12135,cliente1);
+        ContaInterface conta1 = new ContaPoupanca(banco,banco.getListaAgencias().get(1),91472,cliente1);
         cliente1.abrirConta(conta1);
         banco.adicionarConta(conta1);
 
