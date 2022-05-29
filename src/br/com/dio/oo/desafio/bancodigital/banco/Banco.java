@@ -1,28 +1,49 @@
 package br.com.dio.oo.desafio.bancodigital.banco;
 
 import br.com.dio.oo.desafio.bancodigital.agencia.Agencia;
+import br.com.dio.oo.desafio.bancodigital.conta.ContaInterface;
 
 import java.util.List;
 
-public class Banco {
+public class Banco implements BancoInterface{
 
     private String nome;
-    private List<Agencia> listaDeAgencias;
+    private List<Agencia> listaAgencias;
+    private List<ContaInterface> listaContas;
 
-    public Banco(String nome) {
+
+    public Banco(String nome, List<Agencia> listaAgencias, List<ContaInterface> listaContas) {
         this.nome = nome;
+        this.listaAgencias = listaAgencias;
+        this.listaContas = listaContas;
     }
 
-    public Banco(String nome, List<Agencia> listaDeAgencias) {
-        this.nome = nome;
-        this.listaDeAgencias = listaDeAgencias;
+    @Override
+    public void adicionarConta(ContaInterface conta) {
+        this.listaContas.add(conta);
+    }
+
+    @Override
+    public void removerConta(ContaInterface conta) {
+        this.listaContas.remove(conta);
+    }
+
+    @Override
+    public void listarContas() {
+        System.out.println("Contas do Banco "+this.nome);
+        this.listaContas.forEach(System.out::println);
+    }
+
+    @Override
+    public void listarAgencias() {
+        this.listaAgencias.forEach(agencia -> System.out.println(agencia.toString()));
     }
 
     public String getNome() {
         return nome;
     }
 
-    public List<Agencia> getListaDeAgencias() {
-        return listaDeAgencias;
+    public List<Agencia> getListaAgencias() {
+        return listaAgencias;
     }
 }

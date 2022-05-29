@@ -46,12 +46,22 @@ public abstract class Conta implements ContaInterface{
 
     public void imprimirInformacoesExtrato() {
         System.out.println("Banco: "+this.banco.getNome());
-        System.out.println(this.agencia.toString());
+        System.out.print(this.agencia.toString());
         System.out.print(this.titular.toString());
         System.out.println("Número da Conta: "+this.numeroConta);
         System.out.println("Saldo da Conta: "+this.saldo+"R$");
     }
 
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "banco=" + banco.getNome() +
+                ", agencia=" + agencia.getNome() +
+                ", numeroConta=" + numeroConta +
+                ", saldo=" + saldo +
+                ", titular=" + titular.getNome() +
+                '}';
+    }
 
     public Agencia getAgencia() {
         return agencia;
