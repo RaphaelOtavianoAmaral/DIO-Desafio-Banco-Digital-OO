@@ -29,6 +29,16 @@ public class Banco implements BancoInterface{
     }
 
     @Override
+    public void adicionarAgencia(Agencia agencia) {
+        this.listaAgencias.add(agencia);
+    }
+
+    @Override
+    public void removerAgencia(Agencia agencia) {
+        this.listaAgencias.remove(agencia);
+    }
+
+    @Override
     public void listarContas() {
         System.out.println("Contas do Banco "+this.nome);
         this.listaContas.forEach(System.out::println);
@@ -37,6 +47,13 @@ public class Banco implements BancoInterface{
     @Override
     public void listarAgencias() {
         this.listaAgencias.forEach(agencia -> System.out.println(agencia.toString()));
+    }
+
+    @Override
+    public String toString() {
+        return "Banco{" +
+                "nome='" + nome + '\'' +
+                '}';
     }
 
     public String getNome() {
